@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)blob:http://www.hubwiz.com/f8e30f18-52a6-4e32-bed8-e5185d967573 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="http://www.hubwiz.com/course/5599d367a164dd0d75929c76/">--><base href=".">
+	
+    <title>hello,angular2</title>
+    <!--模块加载器-->
+    <script type="text/javascript" src="http://www.hubwiz.com/course/5599d367a164dd0d75929c76/lib/system@0.16.11.js"></script><script type="text/javascript" src="http://www.hubwiz.com/course/5599d367a164dd0d75929c76/lib/es6-module-loader@0.16.6.js" data-init="upgradeSystemLoader"></script>
+    <!--Angular2模块库-->
+    <script type="text/javascript" src="http://www.hubwiz.com/course/5599d367a164dd0d75929c76/lib/angular2.dev.js"></script>
+	<script>
+    	//设置模块加载规则
+    	System.baseURL = document.baseURI;
+		System.config({
+        	map:{traceur:"lib/traceur"},
+			traceurOptions: {annotations: true}
+		});
+	</script>	    
+<script></script><style>body{background:black;color:white;}
+pre{line-height:30px;font-size:20px;}
+</style></head>
+<body>
+    <img src="http://www.hubwiz.com/course/5599d367a164dd0d75929c76/img/jay.gif">
+	<pre class="logger">哎呦，不错哦！
+真的是用ES6写的噢！</pre>
+    
+    <!--定义一个ES6脚本元素-->
+    <script type="module">
+    	//用ES6语法定义一个类
+        export class Logger{
+        	constructor(){
+            	this.el = document.querySelector("pre.logger");
+                this.lines = [];
+            }
+            log(str){
+            	this.lines.push(str);
+                this.el.textContent = this.lines.join("\n");
+            }
+        }
+        //实例化，测试一下
+        var _ = new Logger();
+        _.log("哎呦，不错哦！");
+        _.log("真的是用ES6写的噢！");
+    </script>
+
+</body></html>

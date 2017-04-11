@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>hello,angular2</title>
+		<link rel="stylesheet" href="/stylesheets/class.min.css">
+		<!--模块加载器-->
+		<script type="text/javascript" src="lib/system@0.16.11.js"></script>
+		<!--Angular2模块库-->
+		<script type="text/javascript" src="lib/angular2.dev.js"></script>
+		<script>
+		//设置模块加载规则
+		System.baseURL = document.location.origin;//document.baseURI;
+			System.config({
+		map:{traceur:"lib/traceur"},
+				traceurOptions: {annotations: true}
+			});
+		</script>
+	</head>
+	<body>
+		<!--组件渲染锚点-->
+		<my-app></my-app>
+		
+		<!--定义一个ES6脚本元素-->
+		<script type="module">
+			//从模块库引入三个类型定义
+		import {Component,View,bootstrap} from "angular2/angular2";
+		
+		//组件定义
+		@Component({selector:"my-app"})
+		@View({template:"<h1>Hello,Annotation</h1>"})
+		class EzApp{}
+		
+		//渲染组件
+		bootstrap(EzApp);
+		</script>
+		<hr>
+		<div class="stepBody" style="left: 0px; opacity: 1;"><h3 id="-annotation">注解/Annotation</h3>
+			<p>你一定好奇<em>@Component</em>和<em>@View</em>到底是怎么回事。看起来像其他语言（比如python）
+			的<em>装饰器</em>，是这样吗？</p>
+			<p>ES6规范里没有装饰器。这其实利用了<em>traceur</em>的一个实验特性：<em>注解</em>。给一个类
+			加注解，等同于设置这个类的<em>annotations</em>属性：</p>
+			<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="com">//注解写法</span></li><li class="L1"><span class="lit">@Component</span><span class="pun">({</span><span class="pln">selector</span><span class="pun">:</span><span class="str">"ez-app"</span><span class="pun">})</span></li><li class="L2"><span class="kwd">class</span><span class="pln"> </span><span class="typ">EzApp</span><span class="pun">{...}</span></li></ol></pre>
+			<p>等同于:</p>
+			<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="kwd">class</span><span class="pln"> </span><span class="typ">EzApp</span><span class="pun">{...}</span></li><li class="L1"><span class="typ">EzApp</span><span class="pun">.</span><span class="pln">annotations </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Component</span><span class="pun">({</span><span class="pln">selector</span><span class="pun">:</span><span class="str">"ez-app"</span><span class="pun">})];</span></li></ol></pre>
+			<p>很显然，<em>注解</em>可以看做编译器（traceur）层面的<em>语法糖</em>，但和python的<em>装饰器</em>不同，
+				<em>注解</em>在编译时仅仅被放在<em>annotation</em>里，编译器并不进行解释展开 - 这个解释的工作是
+			Angular2完成的：</p>
+			<p><img src="/course/5599d367a164dd0d75929c76/img/annotation.jpg" alt="annotation"></p>
+			<p>据称，<em>注解</em>的功能就是Angular2团队向traceur团队提出的，这不是traceur的默认选项，
+			因此你看到，我们配置systemjs在使用traceur模块时<em>打开注解</em>：</p>
+			<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="typ">System</span><span class="pun">.</span><span class="pln">config</span><span class="pun">({</span></li><li class="L1"><span class="pln">  map</span><span class="pun">:{</span><span class="pln">traceur</span><span class="pun">:</span><span class="str">"lib/traceur"</span><span class="pun">},</span></li><li class="L2"><span class="pln">  traceurOptions</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">annotations</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">}</span></li><li class="L3"><span class="pun">});</span></li></ol></pre>
+			<div class="cw-exe">
+				修改示例代码中的EzApp组件，不用注解实现同样的功能。
+			</div>
+			<button type="button" class="btn btn-success btn-block next-step" style="margin-top: 20px;">继续学习 <span class="glyphicon glyphicon-forward"></span></button></div>
+		</body>
+	</html>

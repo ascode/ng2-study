@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>初识Angular2</title>
+		<link rel="stylesheet" href="/stylesheets/class.min.css">
+		<!--模块加载器-->
+		<script type="text/javascript" src="lib/system@0.16.11.js"></script>
+		<!--Angular2模块库-->
+		<script type="text/javascript" src="lib/angular2.dev.js"></script>
+		<script>
+		//设置模块加载规则
+		System.baseURL = document.location.origin;//document.baseURI;
+			System.config({
+		map:{traceur:"lib/traceur"},
+				traceurOptions: {annotations: true}
+			});
+		</script>
+	</head>
+	<body>
+		<!--组件渲染锚点-->
+		<my-app></my-app>
+		
+		<!--定义一个ES6脚本元素-->
+		<script type="module">
+			//从模块库引入三个类型定义
+		import {Component,View,bootstrap} from "angular2/angular2";
+		
+		//组件定义
+		@Component({selector:"my-app"})
+		@View({template:"<h1>Hello,Angular2</h1>"})
+		class EzApp{}
+		
+		//渲染组件
+		bootstrap(EzApp);
+		</script>
+		<hr>
+		<div class="stepBody" style="left: 0px; opacity: 1;"><h3 id="-angular2">初识Angular2</h3>
+			<p>写一个Angular2的Hello World应用相当简单，分三步走：</p>
+			<p><strong>1. 引入Angular2预定义类型</strong></p>
+			<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="typ">Component</span><span class="pun">,</span><span class="typ">View</span><span class="pun">,</span><span class="pln">bootstrap</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">"angular2/angular2"</span><span class="pun">;</span></li></ol></pre>
+			<p><em>import</em>是ES6的关键字，用来从模块中引入类型定义。在这里，我们从angular2模块库中引入了三个类型：
+			Component类、View类和bootstrap函数。</p>
+			<p><strong>2. 实现一个Angular2组件</strong></p>
+			<p>实现一个Angular2组件也很简单，定义一个类，然后给这个类添加<em>注解</em>：</p>
+			<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="lit">@Component</span><span class="pun">({</span><span class="pln">selector</span><span class="pun">:</span><span class="str">"ez-app"</span><span class="pun">})</span></li><li class="L1"><span class="lit">@View</span><span class="pun">({</span><span class="kwd">template</span><span class="pun">:</span><span class="str">"&lt;h1&gt;Hello,Angular2&lt;/h1&gt;"</span><span class="pun">})</span></li><li class="L2"><span class="kwd">class</span><span class="pln"> </span><span class="typ">EzApp</span><span class="pun">{}</span></li></ol></pre>
+			<p><em>class</em>也是ES6的关键字，用来定义一个类。<em>@Component</em>和<em>@View</em>都是给类<em>EzApp</em>附加的元信息，
+			被称为<em>注解/Annotation</em>。</p>
+			<p><em>@Component</em>最重要的作用是通过<em>selector</em>属性（值为CSS选择符），指定这个组件渲染到哪个DOM对象上。
+			<em>@View</em>最重要的作用是通过<em>template</em>属性，指定渲染的模板。</p>
+			<p><strong>3. 渲染组件到DOM</strong></p>
+			<p>将组件渲染到DOM上，需要使用<em>自举/bootstrap</em>函数：</p>
+			<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="pln">bootstrap</span><span class="pun">(</span><span class="typ">EzApp</span><span class="pun">);</span></li></ol></pre>
+			<p>这个函数的作用就是通知Angular2框架将<em>EzApp</em>组件渲染到DOM树上。</p>
+			<p>简单吗？我知道你一定还有疑问，别着急，我们慢慢把缺失的知识点补上！</p>
+			<div class="cw-exe">
+				把@Component的selector属性改为"ez-app"，还应该改哪里可以获得和示例同样的结果？
+				</div><button type="button" class="btn btn-success btn-block next-step" style="margin-top: 20px;">继续学习 <span class="glyphicon glyphicon-forward"></span></button></div>
+			</body>
+		</html>

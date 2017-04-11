@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>hello,angular2</title>
+		<link rel="stylesheet" href="/stylesheets/class.min.css">
+		<!--模块加载器-->
+		<script type="text/javascript" src="lib/system@0.16.11.js"></script>
+		<!--Angular2模块库-->
+		<script type="text/javascript" src="lib/angular2.dev.js"></script>
+		<script>
+		//设置模块加载规则
+		System.baseURL = document.location.origin;//document.baseURI;
+			System.config({
+		map:{traceur:"lib/traceur"},
+				traceurOptions: {annotations: true}
+			});
+		</script>
+	</head>
+	<body>
+		<!--组件渲染锚点-->
+		<my-app></my-app>
+		
+		<!--定义一个ES6脚本元素-->
+		<script type="module">
+			//从模块库引入三个类型定义
+		import {Component,View,bootstrap} from "angular2/angular2";
+		
+		//组件定义
+		@Component({selector:"my-app"})
+		@View({template:"<h1>Hello,Annotation</h1>"})
+		class EzApp{}
+		
+		//渲染组件
+		bootstrap(EzApp);
+		</script>
+		<hr>
+		<div class="stepBody" style="left: 0px; opacity: 1;"><h3 id="-">小结</h3>
+			<p>如果你了解一点Angular1.x的<em>bootstrap</em>，可能隐约会感受到Angular2中<em>bootstrap</em>的一些
+			变化 - 我指的并非代码形式上的变化。</p>
+			<p><strong>以组件为核心</strong></p>
+			<p>在Angular1.x中，bootstrap是围绕<em>DOM元素</em>展开的，无论你使用<em>ng-app</em>还是手动执行<em>bootstrap()</em>
+			函数，自举过程是建立在DOM之上的。</p>
+			<p>而在Angular2中，bootstrap是围绕<em>组件</em>开始的，你定义一个组件，然后启动它。如果没有一个组件，
+			你甚至都没有办法使用Angular2！</p>
+			<p><strong>支持多种渲染引擎</strong></p>
+			<p>以<em>组件</em>而非<em>DOM</em>为核心，意味着Angular2在内核隔离了对DOM的依赖 - DOM仅仅作为一种<em>可选</em>的渲染引擎存在：</p>
+			<p><img src="/course/5599d367a164dd0d75929c76/img/render-arch.jpg" alt="render-arch"></p>
+			<p>上面的图中，<em>DOM Render</em>已经实现，<em>Server Render</em>正在测试，<em>iOS Render</em>和<em>Android Render</em>
+			是可预料的特性，虽然我们看不到时间表。</p>
+			<p>这有点像<em>React</em>了。</p>
+			<button type="button" class="btn btn-success btn-block next-step" style="margin-top: 20px;">继续学习 <span class="glyphicon glyphicon-forward"></span></button></div>
+		</body>
+	</html>

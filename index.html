@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>NgForm</title>
+    <script type="text/javascript" src="lib/system@0.16.11.js"></script>
+    <script type="text/javascript" src="lib/angular2.dev.js"></script>
+    <script type="text/javascript" src="lib/system.config.js"></script>
+</head>
+<body>
+	<ez-app></ez-app>
+    <script type="module">
+    	import {Component,View,bootstrap,NgIf} from "angular2/angular2";
+        //引入form指令集
+        import {formDirectives} from "angular2/forms";
+        
+        //EzApp组件
+        @Component({selector:"ez-app"})
+        @View({
+        	directives:[formDirectives,NgIf],
+        	template:`
+            	<a href="1WhyAngular2.html">Why Angular2</a>
+                <a href="2helloangular2.html">ES6工具链</a>
+                <a href="3helloangular2.html">初识Angular2</a>
+                <a href="4helloangular2.html">注解/Annotation</a>
+                <a href="5helloangular2.html">小结</a>
+            `,
+		    styles:[`form{background:#90a4ae;padding:5px;}`]            
+        })
+        class EzApp{
+        	constructor(){
+            }
+        }
+        
+
+        
+        bootstrap(EzApp);
+    </script>
+</body>
+</html>

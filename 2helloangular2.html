@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>hello,angular2</title>
+		<link rel="stylesheet" href="/stylesheets/class.min.css">
+		<!--模块加载器-->
+		<script type="text/javascript" src="lib/system@0.16.11.js"></script>
+		<!--Angular2模块库-->
+		<script type="text/javascript" src="lib/angular2.dev.js"></script>
+		<script>
+		//设置模块加载规则
+		System.baseURL = document.location.origin;//document.baseURI;
+			System.config({
+		map:{traceur:"lib/traceur"},
+				traceurOptions: {annotations: true}
+			});
+		</script>
+	</head>
+	<body>
+		<img src="img/jay.gif">
+	<pre class="logger"></pre>
+	
+	<!--定义一个ES6脚本元素-->
+	<script type="module">
+		//用ES6语法定义一个类
+	export class Logger{
+		constructor(){
+		this.el = document.querySelector("pre.logger");
+	this.lines = [];
+	}
+	log(str){
+		this.lines.push(str);
+	this.el.textContent = this.lines.join("\n");
+	}
+	}
+	//实例化，测试一下
+	var _ = new Logger();
+	_.log("哎呦，不错哦！");
+	_.log("真的是用ES6写的噢！");
+	</script>
+	<hr>
+	<div class="stepBody" style="left: 0px; opacity: 1;"><h3 id="es6-">ES6工具链</h3>
+		<p>要让Angular2应用跑起来不是件轻松的事，因为它用了太多还不被当前主流浏览器支持
+		的技术。所以，我们需要一个<em>工具链</em>：</p>
+		<p><img src="/course/5599d367a164dd0d75929c76/img/toolchain.jpg" alt="toolchain"></p>
+		<p>Angular2是<em>面向未来</em>的科技，要求浏览器支持ES6+，我们现在要尝试的话，需要加一些
+		<em>垫片</em>来抹平当前浏览器与ES6的差异：</p>
+		<ul>
+			<li><strong>systemjs</strong> - 通用模块加载器，支持AMD、CommonJS、ES6等各种格式的JS模块加载</li>
+			<li><strong>es6-module-loader</strong> - ES6模块加载器，systemjs会自动加载这个模块</li>
+			<li><strong>traceur</strong> - ES6转码器，将ES6代码转换为当前浏览器支持的ES5代码。systemjs会自动加载
+			这个模块。</li>
+		</ul>
+		<button type="button" class="btn btn-success btn-block next-step" style="margin-top: 20px;">继续学习 <span class="glyphicon glyphicon-forward"></span></button></div>
+	</body>
+</html>
